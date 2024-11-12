@@ -24,7 +24,7 @@ public class PageFaultRateLRUBuffer extends LRUBuffer {
         if (slot == null) {
             fsCount++;
         }
-        
+
         return super.fix(c);
     }
 }
