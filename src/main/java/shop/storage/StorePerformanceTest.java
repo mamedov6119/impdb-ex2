@@ -29,10 +29,7 @@ public class StorePerformanceTest {
 
     private static long testStore(CustomerStore store, List<Customer> customers) {
         try {
-            // Clean up any existing data
             store.cleanUp();
-
-            // Open store
             store.open();
 
             // Measure insertion time
@@ -50,7 +47,6 @@ public class StorePerformanceTest {
             System.out.printf("Inserted %d customers in %d ms%n", NUM_CUSTOMERS, totalTime);
             System.out.printf("Average time per insertion: %.2f ms%n", (double) totalTime / NUM_CUSTOMERS);
 
-            // Clean up
             store.close();
             return totalTime;
 
