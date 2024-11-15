@@ -63,10 +63,10 @@ public class StorePerformanceTest {
         System.out.println("H2Store total time: " + h2StoreTime + " ms");
 
         if (kvStoreTime > 0 && h2StoreTime > 0) {
-            double timeRatio = (double) h2StoreTime / kvStoreTime;
+            double timeRatio = (double) kvStoreTime / h2StoreTime;
             System.out.printf("H2Store is %.2fx %s than KVStore%n",
                     Math.abs(timeRatio - 1),
-                    timeRatio > 1 ? "slower" : "faster");
+                    timeRatio > 1 ? "faster" : "slower");
         }
     }
 }
