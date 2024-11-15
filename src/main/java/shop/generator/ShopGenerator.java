@@ -6,13 +6,13 @@ import shop.Product;
 
 import java.util.ArrayList;
 import java.util.Random;
-
 import java.util.List;
 
 // TODO: Task 2.2 a)
 public class ShopGenerator {
 
     private static final Random random = new Random();
+    private static int nextCustomerId = 0;
 
     public static List<Product> generateProducts(int numProducts) {
         // TODO
@@ -46,11 +46,12 @@ public class ShopGenerator {
     public static Customer generateCustomer(List<Product> products, int maxOrders) {
         // TODO
         int numOrders = random.nextInt(maxOrders) + 1;
-        Integer customerID = random.nextInt(1000);
-        String customerName = "Customer  " + customerID;
-        String address = "Address + " + random.nextInt(1000);
+        // Generate a unique customer ID using sequential numbering
+        Integer customerId = nextCustomerId++;
+        String customerName = "Customer " + customerId;
+        String address = "Address " + random.nextInt(1000);
 
-        Customer customer = new Customer(customerID, customerName, address);
+        Customer customer = new Customer(customerId, customerName, address);
 
         List<Order> orders = generateOrders(products, numOrders);
 
@@ -60,5 +61,4 @@ public class ShopGenerator {
 
         return customer;
     }
-
 }
